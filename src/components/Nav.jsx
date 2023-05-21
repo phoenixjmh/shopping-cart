@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-export const Nav=()=>(
+const Nav=({cart,openCart})=>(
     <nav>
       <Link to ='/'>
         <h2>HOME</h2>
@@ -9,5 +9,15 @@ export const Nav=()=>(
         SHOP
         </h2>
       </Link>
+      {/* <Link to = "/cart"> */}
+      {cart!==null&&cart!==undefined&&cart.length>0 && openCart!==null?
+      <h2 onClick={openCart}>
+        CART  {cart.length}
+
+      </h2>
+      :null
+      }
+        {/* </Link> */}
     </nav>
 )
+export default Nav;

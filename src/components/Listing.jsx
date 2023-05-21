@@ -1,4 +1,13 @@
-export const Listing=({attributes})=>{
+const Listing=({attributes,addToCart})=>{
+
+    const storeItem={
+        id:attributes.id,
+        img:attributes.photos[0]._links.full.href,
+        make:attributes.make,
+        model:attributes.model,
+        price:attributes.buyer_price.amount,
+    }
+
     return(
         <div className='store-listing'key={attributes.id}>
                     <img src={attributes.photos[0]._links.full.href}  key={attributes.id+'img'}></img>
@@ -11,7 +20,8 @@ export const Listing=({attributes})=>{
                      <p>
                         ${attributes.buyer_price.amount}
                      </p>
-                     <button>Add to Cart</button>
+                     <button onClick={()=>addToCart(storeItem)}>Add to Cart</button>
         </div>
     )
 }
+export default Listing;
