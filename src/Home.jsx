@@ -1,8 +1,7 @@
 
-import './App.css'
-import { Link } from 'react-router-dom'
-import { Nav } from './components/Nav'
-function Home() {
+import './App.scss'
+import  Nav  from './components/Nav'
+const Home=()=> {
 
   return (
     <>
@@ -18,4 +17,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;

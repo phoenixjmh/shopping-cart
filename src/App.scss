@@ -1,4 +1,6 @@
-
+$cart-bg:gray;
+$cart-item:rgb(38, 38, 38);
+$shadow:3px 3px 3px rgba(0, 0, 0, 0.408);
 *{
     margin:0;
     padding:0;
@@ -80,9 +82,48 @@ main{
     height:80%;
 }
 .cart{
+    background-color:$cart-bg;
+    padding:2rem;
     position:absolute;
     width:50%;
     height:100%;
     top:0;
     left:50%;
+    .contents{
+        display:flex;
+        flex-direction: column;
+        gap:1rem;
+        // justify-content: center;
+        // align-items: cent
+        .cartItem{
+            border-radius:.5rem;
+            box-shadow:$shadow;
+            color:white;
+            background-color: $cart-item;
+            display:flex;
+            flex-direction: column;
+            padding:1rem;
+            gap:1rem;
+            img{
+                height:100px;
+                width:100px;
+            }
+        }
+        
+            .total{
+                text-align: center;
+                font-size: 2rem;
+            }
+            .amount{
+                display:flex;
+                height:2rem;
+                button{
+                    width:1.5rem;
+                }
+                input{
+                    width:3rem;
+                    text-align: center;
+                }
+            }
+    }
 }
