@@ -50,6 +50,7 @@ const Shop =()=>{
         <div className='store-grid'>
 
                 {items.map(item=>{
+                    
                     return(
 
                         <Listing attributes={item} key={item.id} addToCart={addToCart}/>
@@ -61,7 +62,7 @@ const Shop =()=>{
             
         
         </div>
-        {cartOpen? <Cart cart={cart}/>:null}
+        {cartOpen? <Cart cart={cart} setCart={setCart}/>:null}
         </>
     )
 }

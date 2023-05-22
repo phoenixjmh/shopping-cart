@@ -1,15 +1,21 @@
 import { useState } from "react";
 
 
-const Item = ({item,totalPrice,setTotalPrice})=>{
+const Item = ({item,cart,setCart,totalPrice,setTotalPrice,allItemPrices,setAllItemPrices})=>{
     const [amountInCart,setAmountInCart]= useState(1);
     const handleIncrease=()=>{
+        
         setAmountInCart(amountInCart+1);
-        setTotalPrice(Number(totalPrice)+Number(item.price*amountInCart));
+        setCart(cart.concat(item));
     }
 
     const handleDecrease=()=>{
-        
+      const index=cart.indexOf(item);
+      console.log(index);
+      const newCart=cart.slice();
+        const extractedElement=newCart.splice(index,1);
+        setAmountInCart(amountInCart-1);
+        setCart(newCart);
     }
 
 
@@ -34,7 +40,7 @@ const Item = ({item,totalPrice,setTotalPrice})=>{
     </p>
       <p>{item.price}</p>
     <p className="amount">
-        <button className="decrease"onClick={()=>setAmountInCart(amountInCart-1)}>-</button>
+        <button className="decrease"onClick={handleDecrease}>-</button>
         <input type="text" className="amount-input"onChange={(e)=>handleManualInput} pattern="^\d+$" value={amountInCart}></input>
         <button className="increase"onClick={handleIncrease}>+</button>
     </p>

@@ -5,30 +5,48 @@ import Item from "./Item";
 
 //Style accordingly
 
-const Cart = ({ cart }) => {
-  let totalPrices = cart.slice().map((item) => item.price);
-  console.log(totalPrices);
+const Cart = ({ cart ,setCart}) => {
+  console.log(cart);
+  let allItemPrices= cart.slice().map((item) => item.price);
+  let renderCart= [...new Set(cart)];
+
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
+    
     setTotalPrice(
-      totalPrices.reduce((a, b) => {
-        return Number(a) + Number(b);
-      })
-    );
-  }, [cart]);
+    allItemPrices.length>0?
+        allItemPrices.reduce((a, b) => {
+          return Number(a) + Number(b);
+        })
+        :0
+      );
+      
+
+      },
+  [allItemPrices]);
 
 
+  let props={
+    allItemPrices:allItemPrices,
+    totalPrice:totalPrice,
+    setTotalPrice:setTotalPrice,
+    cart:cart,
+    setCart:setCart
+
+  }
   return (
     <div className="cart">
       <div className="contents">
-        {cart.map((item) =>(
-            <Item totalPrices={totalPrices}key={item.id}item={item}totalPrice={totalPrice}setTotalPrice={setTotalPrice}/>
+        {renderCart.map((item) =>{
+          if(!item.isDuplicate)
+          return <Item {...props} key={item.id}item={item}/>
+        }
+          
+       )
 
-        )
+      } 
 
-        
-)}
       </div>
       <h4 className="total">TOTAL: {totalPrice}</h4>
     </div>
