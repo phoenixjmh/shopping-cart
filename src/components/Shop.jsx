@@ -45,7 +45,7 @@ const Shop =()=>{
     
     return(
         <>
-        <Nav cart={cart}openCart={openCart}/>
+        <Nav cart={cart}openCart={openCart} setCart={setCart}/>
 
         <div className='store-grid'>
 
