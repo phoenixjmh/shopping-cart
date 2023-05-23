@@ -1,17 +1,23 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import Item from "./Item";
+import {ReactComponent as BackIcon } from '../icons/back.svg'
 //Add ability to increase or decrease the amount of a particular item
 
 //Style accordingly
 
-const Cart = ({ cart ,setCart}) => {
+const Cart = ({ cart ,setCart,closeCart}) => {
   console.log(cart);
   let allItemPrices= cart.slice().map((item) => item.price);
   let renderCart= [...new Set(cart)];
 
   const [totalPrice, setTotalPrice] = useState(0);
+  const [cartClass,setCartClass] = useState('cart opening');
 
+
+  useEffect(()=>{
+    setTimeout(()=>setCartClass('cart'),300);
+  },[])
   useEffect(() => {
     
     setTotalPrice(
@@ -35,11 +41,20 @@ const Cart = ({ cart ,setCart}) => {
     setCart:setCart
 
   }
+
+  const handleClose=()=>{
+    setCartClass('cart closing');
+    setTimeout(()=>closeCart(),300);
+    
+    
+  }
+  
   return (
-    <div className="cart">
+    <div className={cartClass}>
       <h2 className="cart-label">
         Your Cart
       </h2>
+      <div className="close-cart" onClick={handleClose}><BackIcon/></div>
       <div className="contents">
         {renderCart.map((item) =>{
           if(!item.isDuplicate)
@@ -51,9 +66,12 @@ const Cart = ({ cart ,setCart}) => {
       } 
 
       </div>
-      <h4 className="total">TOTAL: {totalPrice}</h4>
-      <button id="checkout">Checkout</button>
+      <h4 className="total">Subtotal: ${Math.round(totalPrice*100)/100}</h4>
+      <button id="checkout"><span className="icon"></span><span className="label">Checkout</span></button>
     </div>
   );
+
+
+
 };
 export default Cart;

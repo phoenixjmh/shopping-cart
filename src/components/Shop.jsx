@@ -42,10 +42,13 @@ const Shop =()=>{
     const openCart=()=>{
         setCartOpen(true);
     }
+    const closeCart = ()=>{
+        setCartOpen(false);
+    }
     
     return(
         <>
-        <Nav cart={cart}openCart={openCart} setCart={setCart}/>
+        <Nav cart={cart}openCart={openCart}/>
 
         <div className='store-grid'>
 
@@ -62,7 +65,7 @@ const Shop =()=>{
             
         
         </div>
-        {cartOpen? <Cart cart={cart} setCart={setCart}/>:null}
+        {cartOpen? <Cart cart={cart} setCart={setCart}closeCart={closeCart}/>:null}
         </>
     )
 }

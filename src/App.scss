@@ -1,11 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+
 $cart-bg:rgb(255, 255, 255);
 $cart-item:rgb(247, 244, 244);
 $shadow:3px 3px 3px rgba(0, 0, 0, 0.408);
-$theme-font:rgb(39, 39, 39);
+$theme-font:rgba(0, 0, 0, 0.896);
+
+
+@keyframes openCart {
+    from {
+        left:100%;}
+    to { 
+        
+        left:50%;}
+  }
+
+
+@keyframes closeCart {
+    from {
+        left:50%;}
+    to { 
+        
+        left:100%;}
+  }
+
+
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-family:'Open Sans', sans-serif;
+    color:$theme-font;
 }
 body{
     height:100vh;
@@ -82,32 +107,70 @@ main{
     width:90%;
     height:80%;
 }
+
+.closing{
+    animation-name:closeCart;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+
+.opening{
+    animation-name: openCart;
+    animation-duration:.3s;
+    animation-fill-mode: forwards;
+
+}
 .cart{
+
+
     background-color:$cart-bg;
-    padding:2rem;
+    padding:3rem;
     position:absolute;
     width:50%;
     height:100%;
     top:0;
     left:50%;
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+
+
+    .cart-label{
+        font-size: 2rem;
+    }
+    .close-cart{
+        svg{
+
+            position:absolute;
+            left:1%;
+            top:1%;
+            font-size:1.6rem;
+            height:40px;
+            width:40px;
+            background-size: cover;
+            background-position: 0%;
+            border:none;
+        }
+    }
+    
     .contents{
         display:flex;
         flex-direction: column;
         gap:1rem;
-        // justify-content: center;
-        // align-items: cent
+        
+
+
         .cartItem{
-            border-radius:.5rem;
-            box-shadow:$shadow;
             color: $theme-font;
-            background-color: $cart-item;
+            border-bottom:2px solid rgba(139, 139, 139, 0.487);
+            background-color: $cart-bg;
             display:flex;
-            // flex-direction: column;
             padding:1rem;
             gap:1rem;
             img{
-                height:80%;
-                width:80%;
+                height:9rem;
+                width:8rem;
+                border-radius: .3rem;
             }
             
             .make{
@@ -115,36 +178,83 @@ main{
                 font-size: 1.5rem;
                 
             }
+            .model{
+                font-weight:600;
+            }
 
             .item-info{
+                flex:2 2 auto;
                 padding:1rem;
                 display: flex;
                 flex-direction: column;
                 gap:1rem;
             }
+            .price{
+                font-size:1.4rem;
+            }
         }
         
            
             .amount{
+                flex:1 1 auto;
+                justify-self: end;
                 display:flex;
                 height:2rem;
+                gap:.5rem;
                 button{
-                    width:1.5rem;
+                    width:1.7rem;
+                    border:none;
+                    font-weight:600;
+                    font-size:2rem;
+                    line-height: 2rem;
+                    background: none;
+                }
+                button:hover{
+                    background-color:rgba(128, 128, 128, 0.124);
+                    transition:background-color .3s ease-in-out;
                 }
                 input{
                     width:3rem;
                     text-align: center;
+                    font-weight:600;
+                    font-size:1rem;
+                    border:2px solid rgba(0, 0, 0, 0.246);
                 }
             }
     }
 
     .total{
-        text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        font-weight:600;
     }
 
     #checkout{
+        border-radius: 1rem;
+        border:2px solid $theme-font;
+        color:$theme-font;
+        line-height:1.8rem;
         padding:1rem;
+        width:50%;
+        margin:auto;
+        font-size:1.5rem;
+        box-shadow: $shadow;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .icon{
+            flex:1 1 auto;
+            // border:2px solid black;
+            height:100%;
+            background:url(icons/pay.svg);
+            background-size:95%;
+            background-position: 0%;
+            background-repeat:no-repeat;
+
+        }
+        .label{
+            flex:2 2 auto;
+            // border:2px solid black;
+        }
     }
 
 
