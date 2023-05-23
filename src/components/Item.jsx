@@ -27,18 +27,15 @@ const Item = ({item,cart,setCart,totalPrice,setTotalPrice,allItemPrices,setAllIt
     return(
     <div className="cartItem" id={item.id} key={item.id + "cart"}>
     <img src={item.img} alt="" />
-    <p className="make-label">
-        Brand:
-    </p>
-      <p>{item.make}</p>
-    <p className="model-label">
-        Product Model:
-    </p>
-      <p>{item.model}</p>
-    <p className="price-label">
-        Price:
-    </p>
-      <p>{item.price}</p>
+   
+      <div className="item-info">
+
+      <p className="make">{item.make}</p>
+    
+      <p className="model">{item.model}</p>
+    
+      <p className="price">${item.price}</p>
+      </div>
     <p className="amount">
         <button className="decrease"onClick={handleDecrease}>-</button>
         <input type="text" className="amount-input"onChange={(e)=>handleManualInput} pattern="^\d+$" value={amountInCart}></input>

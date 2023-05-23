@@ -37,6 +37,9 @@ const Cart = ({ cart ,setCart}) => {
   }
   return (
     <div className="cart">
+      <h2 className="cart-label">
+        Your Cart
+      </h2>
       <div className="contents">
         {renderCart.map((item) =>{
           if(!item.isDuplicate)
@@ -49,6 +52,7 @@ const Cart = ({ cart ,setCart}) => {
 
       </div>
       <h4 className="total">TOTAL: {totalPrice}</h4>
+      <button id="checkout">Checkout</button>
     </div>
   );
 };
