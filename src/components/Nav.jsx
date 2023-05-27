@@ -1,23 +1,37 @@
 import { Link } from "react-router-dom"
-const Nav=({cart,openCart})=>(
+import {ReactComponent as CartIcon } from '../icons/cart.svg'
+
+const Nav=({cart,openCart})=>{
+
+
+return(
+  
     <nav>
-      <Link to ='/'>
+      {/* {console.log(cart)} */}
+      {/* <Link to ='/' state={cart}>
         <h2>HOME</h2>
-      </Link>
-      <Link to ="/shop">
+      </Link> */}
+      {/* <Link to ="/shop" state={cart}>
       <h2>
         SHOP
         </h2>
-      </Link>
+      </Link> */}
       {/* <Link to = "/cart"> */}
-      {cart!==null&&cart!==undefined&&cart.length>0 && openCart!==null?
+      {/* {cart!==null&&cart!==undefined&&cart.length>0 && openCart!==null? */}
       <h2 onClick={openCart}>
-        CART  {cart.length}
+        <CartIcon/>
+        <div className="cart-badge">
+           {cart.length}
+          
+
+          </div> 
 
       </h2>
-      :null
-      }
+        {/* :null
+      } */}
         {/* </Link> */}
     </nav>
 )
+}
+
 export default Nav;

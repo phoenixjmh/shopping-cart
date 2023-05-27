@@ -2,12 +2,20 @@ import { useEffect ,useState} from "react"
 import  Listing  from "./Listing";
 import  Nav  from "./Nav";
 import  Cart  from "./Cart";
+import { useLocation } from "react-router-dom";
 
 const Shop =()=>{
+    const location=useLocation();
+    // const propsData=location.state;
     const [items,setItems] = useState([]);
     const [cart,setCart] = useState([]);
     const [cartOpen,setCartOpen]= useState(false);
 
+    // useEffect(()=>{
+    //     if(location.state.length>0)
+    //     setCart(location.state);
+    //     // console.log(location.state,"LocationState");
+    // },[])
     useEffect(()=>{
         const getListings=()=>{
             fetch('https://api.reverb.com/api/listings/?page=1')
@@ -49,7 +57,7 @@ const Shop =()=>{
     return(
         <>
         <Nav cart={cart}openCart={openCart}/>
-
+        <h1 className="store-label">Local Listings:</h1>
         <div className='store-grid'>
 
                 {items.map(item=>{
