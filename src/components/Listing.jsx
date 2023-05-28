@@ -13,6 +13,7 @@ const Listing = ({ attributes, addToCart }) => {
         <img
           src={attributes.photos[0]._links.full.href}
           key={attributes.id + "img"}
+          alt="Product"
         ></img>
       </div>
       <p className="model" key={attributes.id + "model"}>
