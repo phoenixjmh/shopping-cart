@@ -54,10 +54,11 @@ main {
   font-size: 7rem;
   padding: 2rem;
   font-weight: 400;
+  text-align: center;
 }
 .info-panel {
   position: relative;
-  left: 20%;
+  // left: 20%;
   top: 10rem;
   display: flex;
   flex-direction: column;
