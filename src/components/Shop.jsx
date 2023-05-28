@@ -3,10 +3,8 @@ import Listing from "./Listing";
 import Nav from "./Nav";
 import Cart from "./Cart";
 
-const Shop = () => {
+const Shop = ({ cart, setCart, cartOpen, setCartOpen }) => {
   const [items, setItems] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     const getListings = () => {
@@ -37,6 +35,7 @@ const Shop = () => {
   };
 
   const openCart = () => {
+    console.log("open");
     setCartOpen(true);
   };
   const closeCart = () => {
@@ -45,7 +44,7 @@ const Shop = () => {
 
   return (
     <>
-      <Nav cart={cart} openCart={openCart} />
+      <Nav cart={cart} setCartOpen={() => setCartOpen(true)} />
       <h1 className="store-label">Local Listings:</h1>
       <div className="store-grid">
         {items.map((item) => {
@@ -55,7 +54,11 @@ const Shop = () => {
         })}
       </div>
       {cartOpen ? (
-        <Cart cart={cart} setCart={setCart} closeCart={closeCart} />
+        <Cart
+          cart={cart}
+          setCart={setCart}
+          closeCart={() => setCartOpen(false)}
+        />
       ) : null}
     </>
   );
