@@ -4,10 +4,7 @@ const Item = ({
   item,
   cart,
   setCart,
-  totalPrice,
-  setTotalPrice,
-  allItemPrices,
-  setAllItemPrices,
+
 }) => {
   const [amountInCart, setAmountInCart] = useState(0);
 

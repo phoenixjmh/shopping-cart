@@ -34,17 +34,11 @@ const Shop = ({ cart, setCart, cartOpen, setCartOpen }) => {
     alreadyAdded = false;
   };
 
-  const openCart = () => {
-    console.log("open");
-    setCartOpen(true);
-  };
-  const closeCart = () => {
-    setCartOpen(false);
-  };
+
 
   return (
     <>
-      <Nav cart={cart} setCartOpen={() => setCartOpen(true)} />
+      <Nav cart={cart} setCartOpen={() => setCartOpen(true)} navType={'shop'} />
       <h1 className="store-label">Local Listings:</h1>
       <div className="store-grid">
         {items.map((item) => {

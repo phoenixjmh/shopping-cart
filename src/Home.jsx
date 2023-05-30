@@ -5,7 +5,7 @@ import Cart from "./components/Cart";
 const Home = ({ cart, setCart, cartOpen, setCartOpen }) => {
   return (
     <>
-      <Nav cart={cart} setCartOpen={setCartOpen} />
+      <Nav cart={cart} setCartOpen={setCartOpen} navType={'home'}/>
       <main>
         <div className="banner">
           <h1 id="title">TONE-DEPOT</h1>

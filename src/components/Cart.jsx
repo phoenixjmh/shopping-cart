@@ -18,16 +18,13 @@ const Cart = ({ cart, setCart, closeCart }) => {
     setTotalPrice(
       allItemPrices.length > 0
         ? allItemPrices.reduce((a, b) => {
-            return Number(a) + Number(b);
-          })
+          return Number(a) + Number(b);
+        })
         : 0
     );
   }, [allItemPrices]);
 
   let props = {
-    allItemPrices: allItemPrices,
-    totalPrice: totalPrice,
-    setTotalPrice: setTotalPrice,
     cart: cart,
     setCart: setCart,
   };
