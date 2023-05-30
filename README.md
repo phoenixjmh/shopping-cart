@@ -16,7 +16,7 @@
 - Include a title for each product and an "Add To Cart" button.
 - Upon order submission, update the cart's total quantity and amount.
 
-
+*** 
 
 # Tone Depot - Music Gear Store
 
