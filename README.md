@@ -22,12 +22,25 @@ Once a user has submitted their order, the amount on the cart itself should adju
 
 > A website created with React that uses the reverb API to gather music gear sale listings, posing as local listings in my imposter store "Tone Depot".
 
-  
-### Dynamic Cart
+ 
+ 
+## Shop Component
+> The Reverb API is accessed and parsed to display Recent Listings onto the shop page. Images and all data is loaded from the Reverb API. That data is then processed and mapped by the Shop component and rendered by the Listing Component.
+
+
+## Cart
 #### The user's cart will keep it's total price accurate, and the item count accurate when either a new item is added to the cart, or an existing item has it's number in the cart increased
 
 > When an item already in the cart has it's amount increased, a duplicate of that item is added to the cart again.  
 > Since the cart is dynamic, this would create another duplicate of the displayed item (instead of increasing the number of this item, it would simply append the item to the cart again, creating a duplicate card item).  
-> 
+> To prevent this behavior, the cart's rendering logic is kept seperated from it's data, in a Set.
+> The Item component checks the cart for other items with a matching ID, produces a count to update the  "amount in cart".
+> This way the cart can contain it's total price, as if it's just counting all of the cart items individually, without displaying duplicates unneccesarily.
+
+## Home 
+> A very basic Homepage. The most difficult part of this project was trying to get the Cart Component (which, as seen in the assignment instructions, was originally tied exclusively to the Shop Component, not the Home Component) to display and open properly, keeping it's state and props, unchanged. This was made difficult specifically, because using a multi-page Routed Application setup, there is no obvious hierarchy from which the items could inherit a shared prop or state. Or so i thought. There were many many attempts to use the useLocation hook, which would allow me to pass the Cart state between Pages within the Nav component. Eventually I discovered you can only pass JSON serialiazable objects, so All of my attempts were for nothing
+
+
+
   
   
