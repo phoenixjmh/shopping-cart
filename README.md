@@ -21,4 +21,13 @@ Once a user has submitted their order, the amount on the cart itself should adju
 # This App
 
 > A website created with React that uses the reverb API to gather music gear sale listings, posing as local listings in my imposter store "Tone Depot".
+
+  
+### Dynamic Cart
+#### The user's cart will keep it's total price accurate, and the item count accurate when either a new item is added to the cart, or an existing item has it's number in the cart increased
+
+> When an item already in the cart has it's amount increased, a duplicate of that item is added to the cart again.  
+> Since the cart is dynamic, this would create another duplicate of the displayed item (instead of increasing the number of this item, it would simply append the item to the cart again, creating a duplicate card item).  
 > 
+  
+  
